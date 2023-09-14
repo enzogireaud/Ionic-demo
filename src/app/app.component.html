@@ -1,1 +1,19 @@
-<app-navbar />
+<main>
+  <h1>Liste de Pokémons</h1>
+  <input #input (keyup.enter)="selectPokemon(input.value)" type="number" />
+  <p *ngIf="pokemonSelected">
+    Vous avez séléctionné le pokémon : {{ pokemonSelected.name }}
+  </p>
+  <p *ngIf="!pokemonSelected">Aucun pokémon n'as été trouvé</p>
+  <div class="grid">
+    <div *ngFor="let pokemon of pokemonList" class="card">
+      <div class="card-left">
+        <img src="{{ pokemon.picture }}" alt="{{ pokemon.name }}" />
+      </div>
+      <div class="card-right">
+        <h3>{{ pokemon.name }}</h3>
+        <p>{{ pokemon.created }}</p>
+      </div>
+    </div>
+  </div>
+</main>
