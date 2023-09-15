@@ -1,18 +1,19 @@
 <main>
-  <h1>Liste de Pokémons</h1>
-  <input #input (keyup.enter)="selectPokemon(input.value)" type="number" />
-  <p *ngIf="pokemonSelected">
-    Vous avez séléctionné le pokémon : {{ pokemonSelected.name }}
-  </p>
-  <p *ngIf="!pokemonSelected">Aucun pokémon n'as été trouvé</p>
+  <h1>Pokémons</h1>
   <div class="grid">
-    <div *ngFor="let pokemon of pokemonList" class="card">
+    <div *ngFor="let pokemon of pokemonList" class="card" pkmnBorderCard>
       <div class="card-left">
         <img src="{{ pokemon.picture }}" alt="{{ pokemon.name }}" />
       </div>
       <div class="card-right">
         <h3>{{ pokemon.name }}</h3>
-        <p>{{ pokemon.created }}</p>
+        <p>{{ pokemon.created | date : "dd/MM/yy" }}</p>
+        <span
+          *ngFor="let type of pokemon.types"
+          class="{{ type | pokemonTypeColor }}"
+        >
+          {{ type }}
+        </span>
       </div>
     </div>
   </div>
