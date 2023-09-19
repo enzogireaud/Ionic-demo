@@ -6,14 +6,13 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BorderCardDirective } from './border-card.directive';
-import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
-import { ListPokemonComponent } from './list-pokemon/list-pokemon.component';
-import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PokemonModule } from './pokemon/pokemon.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent,ListPokemonComponent,DetailPokemonComponent, BorderCardDirective, PokemonTypeColorPipe],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent,PageNotFoundComponent],
+  imports: [BrowserModule, IonicModule.forRoot(),FormsModule, PokemonModule,AppRoutingModule ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
